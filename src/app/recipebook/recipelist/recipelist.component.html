@@ -1,0 +1,4 @@
+<mat-list class="list" role="list">
+      <app-recipesingle *ngFor="let recipe of recipeList" [recipe]="recipe" (click)="OnClickRecipe(recipe)"></app-recipesingle>
+</mat-list>
+  

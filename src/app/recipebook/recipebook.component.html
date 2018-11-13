@@ -1,0 +1,6 @@
+<div class="container">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="16px" fxLayoutWrap="wrap" >
+  <app-recipelist fxFlex="1 1 50%" class="recipelist" (onSelectRecipe)="receiveRecipeDetail($event)"></app-recipelist>
+  <app-recipedetail *ngIf="selectedRecipeFromList" fxFlex="1 2 50%" class="recipedetail" [recipeToDisplay]="selectedRecipeFromList"></app-recipedetail>
+</div>
+</div>

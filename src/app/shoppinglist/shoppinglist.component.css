@@ -1,0 +1,27 @@
+.container {
+    background-color: white;
+    margin-top:15px;
+    margin-bottom:15px;
+    margin-left:20px;
+    margin-right:20px;
+
+}
+.title {
+    margin-left: 20px;
+    margin-top:20px;
+    padding:15px;
+}
+
+.shoppinglist {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.clear {
+    color: red;
+}
+
+.shoppinglistedit {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}

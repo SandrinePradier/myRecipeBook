@@ -1,0 +1,15 @@
+<div class="shoppinglistedit">
+    <div class="form" fxLayout="column">
+  <mat-form-field>
+        <input matInput placeholder="Ingredient" #ingredientInput>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Quantité" #quantityInput>
+    </mat-form-field>
+  </div>
+    <div fxLayout="row" fxLayoutGap="10px">    
+    <button mat-raised-button color="primary" type="submit" (click)=addIngredient()>Ajouter</button>
+    <button mat-raised-button color="primary" disabled>Annuler</button>
+    </div>
+</div>
+

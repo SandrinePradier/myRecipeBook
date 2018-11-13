@@ -1,0 +1,15 @@
+.container {
+    background-color: white;
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+.recipelist {
+    background-color:none;
+    margin: 10px;
+}
+
+.recipedetail {
+    background-color: none;
+    margin: 10px;
+}
