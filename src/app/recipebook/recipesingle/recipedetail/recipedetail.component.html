@@ -6,16 +6,16 @@
   <img mat-card-image src="{{recipeToDisplay.imagePath}}" alt="">
   <mat-card-content>
       <mat-card-actions>
-          <button mat-button>Ajouter à la liste</button>
+          <button mat-button (click)="OnSendIngredientsToSL(recipeToDisplay.ingredients)">Ajouter à la liste</button>
           <button mat-button>Editer</button>
           <button mat-button>Supprimer</button>
         </mat-card-actions>
     <h4>Ingredients</h4>
-    <ul>
-      <li>farine</li>
-      <li>oeufs</li>
-      <li>crème liquide entière</li>
-    </ul>
+      <mat-list>
+        <mat-list-item 
+        *ngFor="let ingredient of recipeToDisplay.ingredients">{{ingredient.name}} | {{ingredient.amount}}
+        </mat-list-item>
+      </mat-list>
   </mat-card-content>
 </mat-card>
 

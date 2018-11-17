@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { LayoutModule } from '@angular/cdk/layout';
 
+import { IngredientService } from './shared/ingredient.service';
 
 import { MatButtonModule, 
           MatToolbarModule, 
@@ -14,16 +16,17 @@ import { MatButtonModule,
           MatCardModule, 
           MatFormFieldModule, 
           MatInputModule} from '@angular/material';
+
 import { ShoppinglistComponent } from './shoppinglist/shoppinglist.component';
 import { RecipebookComponent } from './recipebook/recipebook.component';
 import { RecipelistComponent } from './recipebook/recipelist/recipelist.component';
 import { RecipesingleComponent } from './recipebook/recipesingle/recipesingle.component';
-import { RecipeitemComponent } from './recipebook/recipesingle/recipeitem/recipeitem.component';
 import { RecipedetailComponent } from './recipebook/recipesingle/recipedetail/recipedetail.component';
 import { ShoppinglisteditComponent } from './shoppinglist/shoppinglistedit/shoppinglistedit.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
-import { LayoutModule } from '@angular/cdk/layout';
+
 import { FormsModule } from '@angular/forms';
+import { HighlightDirective } from './shared/hightlight.directive';
 
 @NgModule({
   declarations: [
@@ -32,10 +35,10 @@ import { FormsModule } from '@angular/forms';
     RecipebookComponent,
     RecipelistComponent,
     RecipesingleComponent,
-    RecipeitemComponent,
     RecipedetailComponent,
     ShoppinglisteditComponent,
-    MainNavComponent
+    MainNavComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,7 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers:[IngredientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
