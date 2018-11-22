@@ -1,4 +1,26 @@
+<div class="add">
+      <mat-list class="list" role="list">
+            <mat-list-item class="item">
+                  <div>
+                        <button class="addbutton" mat-mini-fab color="primary" routerLink="new">
+                              <mat-icon>
+                                    add
+                              </mat-icon>
+                        </button>
+                        <span class="addtitle">Créer une recette</span>
+                  </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+      </mat-list>
+</div>
+
 <mat-list class="list" role="list">
-      <app-recipesingle *ngFor="let recipe of recipeList" [recipe]="recipe" (click)="OnClickRecipe(recipe)"></app-recipesingle>
+      <app-recipesingle
+      [routerLink] = "[recipe.id]"
+      routerLinkActive="active"
+      style="cursor:pointer;" 
+      *ngFor="let recipe of recipeList" 
+      [recipe]="recipe" 
+      >
+</app-recipesingle>
 </mat-list>
-  

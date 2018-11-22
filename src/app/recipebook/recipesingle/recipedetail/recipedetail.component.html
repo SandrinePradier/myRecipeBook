@@ -5,17 +5,17 @@
   </mat-card-header>
   <img mat-card-image src="{{recipeToDisplay.imagePath}}" alt="">
   <mat-card-content>
-      <mat-card-actions>
-          <button mat-button (click)="OnSendIngredientsToSL(recipeToDisplay.ingredients)">Ajouter à la liste</button>
-          <button mat-button>Editer</button>
-          <button mat-button>Supprimer</button>
-        </mat-card-actions>
+    <mat-card-actions>
+      <button mat-button (click)="OnSendIngredientsToSL(recipeToDisplay.ingredients)">Ajouter à la liste</button>
+      <button mat-button (click)="OnClickToEdit(recipeToDisplay.id)">Editer</button>
+      <button mat-button>Supprimer</button>
+    </mat-card-actions>
     <h4>Ingredients</h4>
-      <mat-list>
-        <mat-list-item 
-        *ngFor="let ingredient of recipeToDisplay.ingredients">{{ingredient.name}} | {{ingredient.amount}}
-        </mat-list-item>
-      </mat-list>
-  </mat-card-content>
+    <mat-list>
+      <mat-list-item 
+      *ngFor="let ingredient of recipeToDisplay.ingredients">{{ingredient.name}} | {{ingredient.amount}}
+    </mat-list-item>
+  </mat-list>
+</mat-card-content>
 </mat-card>
 

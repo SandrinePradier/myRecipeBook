@@ -1,7 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../../recipe.model';
-import { RecipeService } from 'src/app/shared/recipe.service';
 import { IngredientService } from 'src/app/shared/ingredient.service';
+import { RecipeService } from 'src/app/shared/recipe.service';
+
 
 @Component({
   selector: 'app-recipedetail',
@@ -9,16 +11,33 @@ import { IngredientService } from 'src/app/shared/ingredient.service';
   styleUrls: ['./recipedetail.component.css']
 })
 export class RecipedetailComponent implements OnInit {
-  @Input() recipeToDisplay:Recipe;
+  recipeToDisplay:Recipe;
+  id:number;
   
-  constructor( private ingredientService: IngredientService) { }
+  constructor( 
+    private ingredientService: IngredientService,
+    private router:Router,
+    private route:ActivatedRoute,
+    private recipeService:RecipeService
+    ) { }
 
   ngOnInit() {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+        this.recipeToDisplay = this.recipeService.getRecipe(this.id);
+      }
+    )
+    
   }
 
   OnSendIngredientsToSL(ingredients){
   // console.log('i want to send the ingredients to SL:', ingredients);
   this.ingredientService.addRecipeIngredientsToSL(ingredients);
+  }
+
+  OnClickToEdit(id){
+    this.router.navigate(['../', id, 'edit'], {relativeTo:this.route})
   }
 
 }

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +28,9 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from './shared/hightlight.directive';
+import { RouterModule } from '@angular/router';
+import { RecipeeditComponent } from './recipebook/recipesingle/recipeedit/recipeedit.component';
+
 
 @NgModule({
   declarations: [
@@ -38,12 +42,14 @@ import { HighlightDirective } from './shared/hightlight.directive';
     RecipedetailComponent,
     ShoppinglisteditComponent,
     MainNavComponent,
-    HighlightDirective
+    HighlightDirective,
+    RecipeeditComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    AppRoutingModule,
     FormsModule,
     MatButtonModule,
     LayoutModule,
