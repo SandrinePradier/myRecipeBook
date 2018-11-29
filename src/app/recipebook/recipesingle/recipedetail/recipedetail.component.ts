@@ -28,7 +28,6 @@ export class RecipedetailComponent implements OnInit {
         this.recipeToDisplay = this.recipeService.getRecipe(this.id);
       }
     )
-    
   }
 
   OnSendIngredientsToSL(ingredients){
@@ -38,6 +37,11 @@ export class RecipedetailComponent implements OnInit {
 
   OnClickToEdit(id){
     this.router.navigate(['../', id, 'edit'], {relativeTo:this.route})
+  }
+
+  OnClickToDelete(id){
+    this.recipeService.deleteRecipe(id);
+    this.router.navigate(['recettes']);
   }
 
 }

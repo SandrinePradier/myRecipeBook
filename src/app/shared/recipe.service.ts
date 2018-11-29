@@ -1,8 +1,10 @@
-
 import { Recipe } from '../recipebook/recipe.model'
 import { Ingredient } from './ingredient.model';
+import { Subject } from 'rxjs';
 
 export class RecipeService {
+    recipesChanged = new Subject<Recipe[]>();
+
     private recipeList:Recipe[] =  [
           new Recipe(
               1,
@@ -26,7 +28,7 @@ export class RecipeService {
             [ new Ingredient('Chocolat patissier', '250g'), new Ingredient('Lait', '20cl') ]
             )
         ]
-
+        // ./assets/images/Soupe-à-loignon.jpg
     getRecipes(){
         //this methods enable to limit the access to the list, and get only a copy
         return this.recipeList.slice();
@@ -35,5 +37,39 @@ export class RecipeService {
     getRecipe(id:number){
         let selected =  this.recipeList.filter((element) => {return element.id === id});
         return selected[0];
+    }
+
+    createRecipe(recipeObject){
+        let newId = this.recipeList.length +1;
+        let newRecipe = new Recipe(
+            newId,
+            recipeObject.name,
+            recipeObject.description,
+            recipeObject.imagePath,
+            recipeObject.ingredients
+        )
+        this.recipeList.push(newRecipe);
+        this.recipesChanged.next(this.recipeList);
+    }
+
+    updateRecipe(id:number, recipeObject:Recipe){
+        let newRecipe = new Recipe(
+            id,
+            recipeObject.name,
+            recipeObject.description,
+            recipeObject.imagePath,
+            recipeObject.ingredients
+        )
+        let recipeToUpdate = this.getRecipe(id);
+        let recipeIndex = this.recipeList.indexOf(recipeToUpdate)
+        this.recipeList[recipeIndex] = newRecipe;
+        this.recipesChanged.next(this.recipeList);
+    }
+
+    deleteRecipe(id:number){
+        let recipeToUpdate = this.getRecipe(id);
+        let recipeIndex = this.recipeList.indexOf(recipeToUpdate);
+        this.recipeList.splice(recipeIndex, 1);
+        this.recipesChanged.next(this.recipeList);
     }
 }

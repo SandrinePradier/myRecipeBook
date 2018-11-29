@@ -1,0 +1,41 @@
+.form {
+    margin-top: 40px;
+    margin-left:35px;
+    margin-right:35px;
+}
+
+.buttons {
+    padding-top: 20px;
+    margin: auto;
+}
+
+.ingredientrecipe {
+    margin-top: 20px;
+}
+
+.mat-icon-button .mat-icon {
+    height: 18px;
+    width: 18px;
+}
+
+.clear {
+    font-size: 18px;
+    color: red;
+}
+
+.add {
+    padding-left: 10px;
+}
+
+.addIngredient{
+    margin-top:20px;
+}
+
+.new {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+img{
+    max-width: 60%;
+}

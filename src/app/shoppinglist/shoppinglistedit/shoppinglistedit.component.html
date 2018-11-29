@@ -1,15 +1,30 @@
 <div class="shoppinglistedit">
     <div class="form" fxLayout="column">
-  <mat-form-field>
-        <input matInput placeholder="Ingredient" #ingredientInput>
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Quantité" #quantityInput>
-    </mat-form-field>
-  </div>
-    <div fxLayout="row" fxLayoutGap="10px">    
-    <button mat-raised-button color="primary" type="submit" (click)=addIngredient()>Ajouter</button>
-    <button mat-raised-button color="primary" disabled>Annuler</button>
+        <form (ngSubmit)="HandleIngredient(f)" #f="ngForm">
+            <mat-form-field>
+                <input 
+                matInput 
+                type="text"
+                placeholder="Ingredient" 
+                ngModel
+                name="name"
+                required>
+            </mat-form-field>
+            <mat-form-field>
+                <input 
+                matInput
+                type="text" 
+                placeholder="Quantité" 
+                ngModel
+                name ="amount"
+                required>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutGap="10px">    
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid">{{action}}</button>
+                    <button mat-raised-button color="primary" type="reset" (click)="OnClear()">Annuler</button>
+            </div>
+        </form>
     </div>
+    
 </div>
 

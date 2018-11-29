@@ -1,21 +1,48 @@
 <mat-card class="recipedetail">
-  <mat-card-header>
-    <mat-card-title>{{recipeToDisplay.name}}</mat-card-title>
-    <mat-card-subtitle>{{recipeToDisplay.description}}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="{{recipeToDisplay.imagePath}}" alt="">
-  <mat-card-content>
-    <mat-card-actions>
-      <button mat-button (click)="OnSendIngredientsToSL(recipeToDisplay.ingredients)">Ajouter à la liste</button>
-      <button mat-button (click)="OnClickToEdit(recipeToDisplay.id)">Editer</button>
-      <button mat-button>Supprimer</button>
-    </mat-card-actions>
-    <h4>Ingredients</h4>
-    <mat-list>
-      <mat-list-item 
-      *ngFor="let ingredient of recipeToDisplay.ingredients">{{ingredient.name}} | {{ingredient.amount}}
-    </mat-list-item>
-  </mat-list>
+  <mat-card-header fxLayout="row" fxLayoutAlign="space-betweenstart">
+    <div fxFlex="100%">
+      <mat-card-title>{{recipeToDisplay.name}}</mat-card-title>
+      <mat-card-subtitle>{{recipeToDisplay.description}}</mat-card-subtitle>
+    </div>
+    <div>
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button 
+        mat-menu-item 
+        (click)="OnClickToEdit(recipeToDisplay.id)">
+        <mat-icon>edit</mat-icon>
+        <span>Editer</span>
+      </button>
+      <button 
+        mat-menu-item
+        (click)="OnClickToDelete(recipeToDisplay.id)">
+        <mat-icon>delete</mat-icon>
+        <span>Supprimer</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-card-header>
+<img mat-card-image src="{{recipeToDisplay.imagePath}}" alt="ingredient.name">
+<mat-card-content>
+  <div fxLayout="row" fxLayoutGap="15px">
+  <h4 class="ingredientTitle">Ingredients</h4>
+</div>
+  <mat-list>
+    <mat-list-item 
+    *ngFor="let ingredient of recipeToDisplay.ingredients">{{ingredient.name}} | {{ingredient.amount}}
+  </mat-list-item>
+  <button 
+      mat-raised-button
+      class="sendIngredient"
+      color="primary"
+     (click)="OnSendIngredientsToSL(recipeToDisplay.ingredients)"
+     >Envoyer vers la shopping list
+    </button>
+</mat-list>
 </mat-card-content>
 </mat-card>
 

@@ -1,3 +1,88 @@
-<p>
-  recipeedit works!
-</p>
+<div class="form">
+  <p class="new" *ngIf="!editMode">Nouvelle recette</p>
+  <form [formGroup]="recipeForm" (ngSubmit)="onRecipeSubmit()" fxLayout="column">
+    <div class="mainrecipe" fxLayout="column">
+      <mat-form-field>
+        <input 
+        matInput
+        placeholder="Titre"
+        [formControlName]="'name'">
+      </mat-form-field>
+      <mat-form-field>
+        <input 
+        matInput
+        placeholder="Image URL"
+        [formControlName]="'imagePath'"
+        #imagePath>
+      </mat-form-field>
+      <div>
+        <img [src]=imagePath.value>
+      </div>
+      <mat-form-field>
+        <textarea
+        matInput
+        placeholder="Description"
+        [formControlName]="'description'">
+      </textarea>
+    </mat-form-field>
+  </div>
+  <div [formArrayName]="'ingredients'" class="ingredientrecipe">
+    <div 
+    *ngFor="let ingredient of getIngredients().controls; let i = index"
+    [formGroupName]="i"
+    fxLayout="column">
+    <div  fxLayout="row" fxLayoutGap="15px">
+      <mat-form-field fxFlex="50%">
+        <input
+        matInput
+        placeholder="Ingredient"
+        [formControlName]="'name'">
+      </mat-form-field>
+      <mat-form-field fxFlex="30%">
+        <input
+        matInput
+        placeholder="Quantité"
+        [formControlName]="'amount'">
+      </mat-form-field>
+      <span fxFlex="20%">
+        <button mat-icon-button>
+          <mat-icon class="clear" type="button" (click)="clickToDeleteIngredient(i)">clear</mat-icon>
+        </button>
+      </span>
+    </div>
+  </div>
+  <div class="addIngredient">
+      <button mat-mini-fab color="primary" type="button" (click)="clickToAddIngredient()">
+          <mat-icon>
+              add
+        </mat-icon>
+      </button>
+        <span class="add">Ajouter un ingrédient</span>
+  </div>
+</div>
+<hr>
+<hr>
+<div class="buttons" fxLayout="row" fxLayoutGap="15px">
+    <button 
+    mat-raised-button 
+    color="primary" 
+    type="submit" 
+    [disabled]="!recipeForm.valid">
+    Enregistrer
+  </button>
+    <button
+    mat-raised-button 
+    color="primary" 
+    type="reset">
+    Effacer
+  </button>
+  <button 
+    mat-raised-button 
+    color="warn" 
+    type="button"
+    (click)="clear()">
+    Annuler
+  </button>
+  </div>
+</form>
+</div>

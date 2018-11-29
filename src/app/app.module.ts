@@ -1,13 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule } from '@angular/core';
+
 import { AppRoutingModule } from './app-routing.module';
 
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutModule } from '@angular/cdk/layout';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { IngredientService } from './shared/ingredient.service';
+
+import { HighlightDirective } from './shared/hightlight.directive';
+import { RecipeService } from './shared/recipe.service';
 
 import { MatButtonModule, 
           MatToolbarModule, 
@@ -16,8 +22,10 @@ import { MatButtonModule,
           MatListModule, 
           MatCardModule, 
           MatFormFieldModule, 
-          MatInputModule} from '@angular/material';
+          MatInputModule,
+          MatMenuModule} from '@angular/material';
 
+import { AppComponent } from './app.component';
 import { ShoppinglistComponent } from './shoppinglist/shoppinglist.component';
 import { RecipebookComponent } from './recipebook/recipebook.component';
 import { RecipelistComponent } from './recipebook/recipelist/recipelist.component';
@@ -25,11 +33,9 @@ import { RecipesingleComponent } from './recipebook/recipesingle/recipesingle.co
 import { RecipedetailComponent } from './recipebook/recipesingle/recipedetail/recipedetail.component';
 import { ShoppinglisteditComponent } from './shoppinglist/shoppinglistedit/shoppinglistedit.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
-
-import { FormsModule } from '@angular/forms';
-import { HighlightDirective } from './shared/hightlight.directive';
-import { RouterModule } from '@angular/router';
 import { RecipeeditComponent } from './recipebook/recipesingle/recipeedit/recipeedit.component';
+
+
 
 
 @NgModule({
@@ -42,26 +48,28 @@ import { RecipeeditComponent } from './recipebook/recipesingle/recipeedit/recipe
     RecipedetailComponent,
     ShoppinglisteditComponent,
     MainNavComponent,
+    RecipeeditComponent,
     HighlightDirective,
-    RecipeeditComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    LayoutModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
-    LayoutModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatMenuModule
   ],
-  providers:[IngredientService],
+  providers:[IngredientService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

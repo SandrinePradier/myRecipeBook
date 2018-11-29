@@ -1,12 +1,17 @@
 <div class="container">
   <h3 class="title">Shopping list:</h3>
   <div class="shoppinglist" fxLayout="row" fxLayout.xs="column" fxlayoutGap="60px">
-    <mat-list fxFlex="30%">
-      <mat-list-item *ngFor="let ingredient of ingredients; let i = index">
+    <mat-list fxFlex="40%">
+      <mat-list-item 
+      *ngFor="let ingredient of ingredients; let i = index"  
+      hightlight>
         {{ingredient.name}} ({{ingredient.amount}})
         <span>
+            <button mat-icon-button>
+                <mat-icon (click)="clickToEditIngredient(i)">edit</mat-icon>
+              </button>
           <button mat-icon-button>
-            <mat-icon class="clear">clear</mat-icon>
+            <mat-icon class="clear" (click)="clickToDeleteIngredient(i)">clear</mat-icon>
           </button>
         </span>
       </mat-list-item>
