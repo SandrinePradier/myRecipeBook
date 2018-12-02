@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule } from '@angular/core';
 
@@ -34,6 +35,7 @@ import { RecipedetailComponent } from './recipebook/recipesingle/recipedetail/re
 import { ShoppinglisteditComponent } from './shoppinglist/shoppinglistedit/shoppinglistedit.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { RecipeeditComponent } from './recipebook/recipesingle/recipeedit/recipeedit.component';
+import { DataStorageService } from './shared/data-storage.service';
 
 
 
@@ -54,6 +56,7 @@ import { RecipeeditComponent } from './recipebook/recipesingle/recipeedit/recipe
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FlexLayoutModule,
     LayoutModule,
     AppRoutingModule,
@@ -69,7 +72,7 @@ import { RecipeeditComponent } from './recipebook/recipesingle/recipeedit/recipe
     MatInputModule,
     MatMenuModule
   ],
-  providers:[IngredientService, RecipeService],
+  providers:[IngredientService, RecipeService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

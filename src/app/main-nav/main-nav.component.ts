@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { DataStorageService } from '../shared/data-storage.service';
 
 
 @Component({
@@ -19,18 +20,16 @@ export class MainNavComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private dataStorageService:DataStorageService) {}
 
-  // displayShoppingList(){
-  //   console.log('I want to see shopping list');
-  //   this.goToShoppingList = true;
-  //   this.clickOnShoppingList.emit(this.goToShoppingList);
-  // }
+  saveRecipes(){
+    this.dataStorageService.storeRecipes()
+    .subscribe((response)=> console.log('response:', response));
+  }
 
-  // displayrecettes(){
-  //   console.log('I want to display recettes');
-  //   this.goToShoppingList = false;
-  //   this.clickOnShoppingList.emit(this.goToShoppingList);
+  // fetchRecipes(){
+  //   this.dataStorageService.getRecipesfromFB()
+  //   .subscribe((response) => console.log('response:', response));
   // }
 
 }

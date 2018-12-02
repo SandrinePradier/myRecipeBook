@@ -21,6 +21,23 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>recipebook</span>
+      <button
+      class='saverecipe'
+      type="button"
+      mat-button
+      (click)="saveRecipes()"
+      >
+      Sauvegarder
+      </button>
+      <button
+      class='fetch'
+      type="button"
+      mat-button
+      disabled
+      (click)="fetchRecipes()"
+      >
+      Récupérer
+      </button>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

@@ -4,31 +4,38 @@ import { Subject } from 'rxjs';
 
 export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
+    private recipeList:Recipe[] = [];
 
-    private recipeList:Recipe[] =  [
-          new Recipe(
-              1,
-            'Choux à la creme', 
-            'décilieux petits choux à la crème fouétée', 
-            './assets/images/cream-puff.jpg',
-            [ new Ingredient('Farine', '500g'), new Ingredient('Lait', '20cl'), new Ingredient('Creme entiere', '20cl') ]
-            ),
-          new Recipe(
-              2,
-            'Tiramisu', 
-            'Le vrai tiramisu traditionnel au café',
-            './assets/images/tiramisu.jpg',
-            [ new Ingredient('Macarpone', '500g'), new Ingredient('Café', '20cl'), new Ingredient('Boudoirs', '400g'), new Ingredient('Amareto', '1c à soupe') ]
-            ),
-          new Recipe(
-              3,
-            'Mousse au chocolat', 
-            'Mousse au chocolat légère',
-            './assets/images/mousseauchocolat.jpg',
-            [ new Ingredient('Chocolat patissier', '250g'), new Ingredient('Lait', '20cl') ]
-            )
-        ]
-        // ./assets/images/Soupe-à-loignon.jpg
+    // private recipeList:Recipe[] =  [
+    //       new Recipe(
+    //           1,
+    //         'Choux à la creme', 
+    //         'décilieux petits choux à la crème fouétée', 
+    //         './assets/images/cream-puff.jpg',
+    //         [ new Ingredient('Farine', '500g'), new Ingredient('Lait', '20cl'), new Ingredient('Creme entiere', '20cl') ]
+    //         ),
+    //       new Recipe(
+    //           2,
+    //         'Tiramisu', 
+    //         'Le vrai tiramisu traditionnel au café',
+    //         './assets/images/tiramisu.jpg',
+    //         [ new Ingredient('Macarpone', '500g'), new Ingredient('Café', '20cl'), new Ingredient('Boudoirs', '400g'), new Ingredient('Amareto', '1c à soupe') ]
+    //         ),
+    //       new Recipe(
+    //           3,
+    //         'Mousse au chocolat', 
+    //         'Mousse au chocolat légère',
+    //         './assets/images/mousseauchocolat.jpg',
+    //         [ new Ingredient('Chocolat patissier', '250g'), new Ingredient('Lait', '20cl') ]
+    //         )
+    //     ]
+    //     // ./assets/images/Soupe-à-loignon.jpg
+    
+    loadRecipes(recipes:Recipe[]){
+            this.recipeList = recipes;
+            this.recipesChanged.next(this.recipeList);
+    }
+    
     getRecipes(){
         //this methods enable to limit the access to the list, and get only a copy
         return this.recipeList.slice();
