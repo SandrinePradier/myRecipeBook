@@ -1,5 +1,4 @@
 import { Recipe } from '../recipebook/recipe.model'
-import { Ingredient } from './ingredient.model';
 import { Subject } from 'rxjs';
 
 export class RecipeService {
@@ -30,6 +29,7 @@ export class RecipeService {
     //         )
     //     ]
     //     // ./assets/images/Soupe-à-loignon.jpg
+            //./assets/images/lasagnes-bolognaise.jpg
     
     loadRecipes(recipes:Recipe[]){
             this.recipeList = recipes;
@@ -47,7 +47,8 @@ export class RecipeService {
     }
 
     createRecipe(recipeObject){
-        let newId = this.recipeList.length +1;
+        let lastElementOfTheList = this.recipeList[this.recipeList.length -1];
+        let newId = lastElementOfTheList.id +1;
         let newRecipe = new Recipe(
             newId,
             recipeObject.name,

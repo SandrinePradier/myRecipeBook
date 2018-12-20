@@ -25,7 +25,12 @@ export class RecipedetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.recipeToDisplay = this.recipeService.getRecipe(this.id);
+        if (this.recipeService.getRecipe(this.id)) {
+          this.recipeToDisplay = this.recipeService.getRecipe(this.id);
+        }
+       else {
+        this.router.navigate(['recettes'])
+       }
       }
     )
   }

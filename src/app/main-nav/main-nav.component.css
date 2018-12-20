@@ -16,6 +16,14 @@
   z-index: 1;
 }
 
-.saverecipe {
+.buttonAction {
   color: white;
+}
+
+.title {
+  margin-left: 10px;
+}
+
+.person {
+  color:white;
 }

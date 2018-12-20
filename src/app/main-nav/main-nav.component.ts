@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataStorageService } from '../shared/data-storage.service';
+import { AuthService } from '../auth/auth.service';
 
 
 @Component({
@@ -20,16 +21,23 @@ export class MainNavComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private dataStorageService:DataStorageService) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver, 
+    private dataStorageService:DataStorageService,
+    private authService:AuthService) {}
 
   saveRecipes(){
     this.dataStorageService.storeRecipes()
     .subscribe((response)=> console.log('response:', response));
   }
 
-  // fetchRecipes(){
-  //   this.dataStorageService.getRecipesfromFB()
-  //   .subscribe((response) => console.log('response:', response));
-  // }
+  fetchRecipes(){
+    this.dataStorageService.getRecipesfromFB()
+    // .subscribe((response) => console.log('response:', response));
+  }
+
+  logOut(){
+    this.authService.logOutUser();
+  }
 
 }

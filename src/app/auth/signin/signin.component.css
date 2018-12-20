@@ -1,0 +1,15 @@
+.form {
+    width: 50%;
+    min-width: 250px;
+    margin:auto;
+    padding-top: 100px;
+}
+
+.lien {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+
+

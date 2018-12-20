@@ -1,0 +1,31 @@
+<div>
+  <form class="form" fxLayout="column" fxLayoutAlign="center" (ngSubmit)="signUp(form)" #form="ngForm">
+  <mat-form-field>
+    <input
+    matInput
+    placeholder="Email"
+    type="email"
+    ngModel
+    name="email"
+    required
+    email
+    >
+  </mat-form-field>
+  <mat-form-field>
+      <input
+      matInput
+      placeholder="Password"
+      type="password"
+      ngModel
+      name="password"
+      required
+      >
+    </mat-form-field>
+    <button
+    mat-raised-button color="primary"
+    type="submit"
+    [disabled]="!form.valid"
+    >Creer un compte</button>
+  </form>
+  <div class="lien"><a routerLink="/signin">Me connecter</a></div>
+</div>

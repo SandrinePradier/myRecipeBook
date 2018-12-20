@@ -6,73 +6,40 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { LayoutModule } from '@angular/cdk/layout';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { IngredientService } from './shared/ingredient.service';
-
-import { HighlightDirective } from './shared/hightlight.directive';
 import { RecipeService } from './shared/recipe.service';
-
-import { MatButtonModule, 
-          MatToolbarModule, 
-          MatSidenavModule, 
-          MatIconModule, 
-          MatListModule, 
-          MatCardModule, 
-          MatFormFieldModule, 
-          MatInputModule,
-          MatMenuModule} from '@angular/material';
-
-import { AppComponent } from './app.component';
-import { ShoppinglistComponent } from './shoppinglist/shoppinglist.component';
-import { RecipebookComponent } from './recipebook/recipebook.component';
-import { RecipelistComponent } from './recipebook/recipelist/recipelist.component';
-import { RecipesingleComponent } from './recipebook/recipesingle/recipesingle.component';
-import { RecipedetailComponent } from './recipebook/recipesingle/recipedetail/recipedetail.component';
-import { ShoppinglisteditComponent } from './shoppinglist/shoppinglistedit/shoppinglistedit.component';
-import { MainNavComponent } from './main-nav/main-nav.component';
-import { RecipeeditComponent } from './recipebook/recipesingle/recipeedit/recipeedit.component';
+import { AuthService } from './auth/auth.service';
 import { DataStorageService } from './shared/data-storage.service';
 
+import { AppComponent } from './app.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { AuthGuard } from './auth/auth-guard.service';
+import { RecipesModule } from './recipebook/recipes.module';
+import { MaterialModule } from './shared/material.module';
+import { ShoppingListModule } from './shoppinglist/shoppinglist.module';
+import { AuthModule } from './auth/auth.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShoppinglistComponent,
-    RecipebookComponent,
-    RecipelistComponent,
-    RecipesingleComponent,
-    RecipedetailComponent,
-    ShoppinglisteditComponent,
-    MainNavComponent,
-    RecipeeditComponent,
-    HighlightDirective,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
+    //browserModule contains all the feature of Common modules
+    //plus some features only necessary at the start of the application
+    //so only need in the app module
     BrowserAnimationsModule,
     HttpClientModule,
-    FlexLayoutModule,
-    LayoutModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatMenuModule
+    MaterialModule,
+    AuthModule,
+    RecipesModule,
+    ShoppingListModule,
+    AppRoutingModule
   ],
-  providers:[IngredientService, RecipeService, DataStorageService],
+  providers:[IngredientService, RecipeService, DataStorageService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
